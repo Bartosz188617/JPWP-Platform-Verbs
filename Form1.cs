@@ -1,8 +1,8 @@
 namespace JPWP_Platform_Verbs
 {
-    public partial class Form1 : Form
+    public partial class PlatformVerbsForm : Form
     {
-        public Form1()
+        public PlatformVerbsForm()
         {
             InitializeComponent();
         }
