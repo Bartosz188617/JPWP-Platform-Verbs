@@ -29,52 +29,56 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            panel1 = new Panel();
-            pictureBox1 = new PictureBox();
+            GameScene = new Panel();
+            Player = new PictureBox();
             gameTimer = new System.Windows.Forms.Timer(components);
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            GameScene.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Player).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // GameScene
             // 
-            panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(10, 10);
-            panel1.Margin = new Padding(0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1280, 700);
-            panel1.TabIndex = 0;
+            GameScene.Controls.Add(Player);
+            GameScene.Location = new Point(10, 10);
+            GameScene.Margin = new Padding(0);
+            GameScene.Name = "GameScene";
+            GameScene.Size = new Size(1280, 700);
+            GameScene.TabIndex = 0;
             // 
-            // pictureBox1
+            // Player
             // 
-            pictureBox1.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox1.Location = new Point(73, 632);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(50, 50);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            Player.BackColor = SystemColors.ActiveCaptionText;
+            Player.Location = new Point(73, 632);
+            Player.Name = "Player";
+            Player.Size = new Size(50, 50);
+            Player.TabIndex = 0;
+            Player.TabStop = false;
             // 
             // gameTimer
             // 
             gameTimer.Enabled = true;
+            gameTimer.Interval = 10;
+            gameTimer.Tick += gameTimer_Tick;
             // 
             // PlatformVerbsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1304, 731);
-            Controls.Add(panel1);
+            Controls.Add(GameScene);
             Name = "PlatformVerbsForm";
             Text = "Platform Verb";
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            KeyDown += gameKeyDown;
+            KeyUp += gameKeyUp;
+            GameScene.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)Player).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
-        private PictureBox pictureBox1;
+        private Panel GameScene;
+        private PictureBox Player;
         private System.Windows.Forms.Timer gameTimer;
     }
 }
