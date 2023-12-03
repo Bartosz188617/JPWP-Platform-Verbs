@@ -6,8 +6,8 @@ namespace JPWP_Platform_Verbs
 {
     public partial class PlatformVerbsForm : Form
     {
-        private bool right, left, jump;
-        private int gravity = 20;
+        private bool right, left, jump, jumpON;
+        private int gravity = 25;
         private int force;
 
         public PlatformVerbsForm()
@@ -27,7 +27,7 @@ namespace JPWP_Platform_Verbs
 
             if (!jump)
             {
-                if (e.KeyCode == Keys.W)
+                if (e.KeyCode == Keys.Space)
                 {
                     jump = true;
                     force = gravity;
@@ -62,7 +62,15 @@ namespace JPWP_Platform_Verbs
             if (jump)
             {          
                 Player.Top -= force;
-                force -= 1;
+                if (force > -10)
+                {
+                    force -= 1;
+                }
+                else
+                {
+                    force = -10;
+                }
+                
                 System.Diagnostics.Debug.WriteLine(force);
             }
 
@@ -73,6 +81,7 @@ namespace JPWP_Platform_Verbs
             }
             else
             {
+
                 Player.Top += 5;
             }
             #endregion
@@ -102,8 +111,8 @@ namespace JPWP_Platform_Verbs
                             {
                                 Player.Top = x.Top - Player.Width + 1;
                                 jump = false;
-                            }                           
-                        }
+                            }
+                        }                       
                     }
                 }
             }
