@@ -32,6 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlatformVerbsForm));
             gameTimer = new System.Windows.Forms.Timer(components);
             GameScene = new Panel();
+            Timer = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            TheWord = new Label();
+            pictureBox5 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            pictureBox3 = new PictureBox();
             Player = new PictureBox();
             Platform3 = new PictureBox();
             Platform4 = new PictureBox();
@@ -39,10 +48,10 @@
             Platform1 = new PictureBox();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
             GameScene.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Platform3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Platform4).BeginInit();
@@ -50,20 +59,23 @@
             ((System.ComponentModel.ISupportInitialize)Platform1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SuspendLayout();
             // 
             // gameTimer
             // 
             gameTimer.Enabled = true;
-            gameTimer.Interval = 17;
+            gameTimer.Interval = 20;
             gameTimer.Tick += gameTimer_Tick;
             // 
             // GameScene
             // 
             GameScene.BackColor = SystemColors.Control;
+            GameScene.Controls.Add(Timer);
+            GameScene.Controls.Add(label4);
+            GameScene.Controls.Add(label3);
+            GameScene.Controls.Add(label2);
+            GameScene.Controls.Add(label1);
+            GameScene.Controls.Add(TheWord);
             GameScene.Controls.Add(pictureBox5);
             GameScene.Controls.Add(pictureBox4);
             GameScene.Controls.Add(pictureBox3);
@@ -80,11 +92,105 @@
             GameScene.Size = new Size(1280, 700);
             GameScene.TabIndex = 0;
             // 
+            // Timer
+            // 
+            Timer.AutoSize = true;
+            Timer.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Timer.Location = new Point(1198, 17);
+            Timer.Name = "Timer";
+            Timer.Size = new Size(43, 36);
+            Timer.TabIndex = 1;
+            Timer.Tag = "";
+            Timer.Text = "00";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(599, 620);
+            label4.Name = "label4";
+            label4.Size = new Size(84, 36);
+            label4.TabIndex = 13;
+            label4.Text = "VERB";
+            label4.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(898, 470);
+            label3.Name = "label3";
+            label3.Size = new Size(84, 36);
+            label3.TabIndex = 12;
+            label3.Text = "VERB";
+            label3.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(599, 320);
+            label2.Name = "label2";
+            label2.Size = new Size(84, 36);
+            label2.TabIndex = 11;
+            label2.Text = "VERB";
+            label2.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(288, 470);
+            label1.Name = "label1";
+            label1.Size = new Size(84, 36);
+            label1.TabIndex = 10;
+            label1.Text = "VERB";
+            label1.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // TheWord
+            // 
+            TheWord.AutoSize = true;
+            TheWord.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TheWord.Location = new Point(276, 16);
+            TheWord.Name = "TheWord";
+            TheWord.Size = new Size(84, 36);
+            TheWord.TabIndex = 1;
+            TheWord.Text = "VERB";
+            TheWord.TextAlign = ContentAlignment.TopCenter;
+            TheWord.Click += TheWord_Click;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(115, 3);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(50, 50);
+            pictureBox5.TabIndex = 9;
+            pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(59, 3);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(50, 50);
+            pictureBox4.TabIndex = 8;
+            pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(3, 3);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(50, 50);
+            pictureBox3.TabIndex = 7;
+            pictureBox3.TabStop = false;
+            // 
             // Player
             // 
             Player.BackColor = SystemColors.Control;
             Player.Image = (Image)resources.GetObject("Player.Image");
-            Player.Location = new Point(617, 250);
+            Player.Location = new Point(89, 224);
             Player.Margin = new Padding(0);
             Player.Name = "Player";
             Player.Size = new Size(50, 50);
@@ -163,33 +269,6 @@
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
             // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(3, 3);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(50, 50);
-            pictureBox3.TabIndex = 7;
-            pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(59, 3);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(50, 50);
-            pictureBox4.TabIndex = 8;
-            pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(115, 3);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(50, 50);
-            pictureBox5.TabIndex = 9;
-            pictureBox5.TabStop = false;
-            // 
             // PlatformVerbsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -201,6 +280,10 @@
             KeyDown += gameKeyDown;
             KeyUp += gameKeyUp;
             GameScene.ResumeLayout(false);
+            GameScene.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)Player).EndInit();
             ((System.ComponentModel.ISupportInitialize)Platform3).EndInit();
             ((System.ComponentModel.ISupportInitialize)Platform4).EndInit();
@@ -208,9 +291,6 @@
             ((System.ComponentModel.ISupportInitialize)Platform1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ResumeLayout(false);
         }
 
@@ -228,5 +308,11 @@
         private PictureBox pictureBox5;
         private PictureBox pictureBox4;
         private PictureBox pictureBox3;
+        private Label TheWord;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private Label Timer;
     }
 }

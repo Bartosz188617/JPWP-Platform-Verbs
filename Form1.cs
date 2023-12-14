@@ -1,20 +1,31 @@
 using System.Diagnostics;
 using System.Numerics;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace JPWP_Platform_Verbs
 {
     public partial class PlatformVerbsForm : Form
     {
+        private int counter = 0, timeSec = 15;
+        private int score = 1;
         private bool right, left, jump, jumpON;
         private int gravity = 25;
         private int force;
+        String line, verb;
+
+        Font LargeFont = new Font("Palatino Linotype", 20);
+        
 
         public PlatformVerbsForm()
         {
             InitializeComponent();
-            //Player.Location = new Point(615, 480);
-            //Platform1.Location = new Point(490, 670);
+
+            Timer.Text = timeSec.ToString();
+            Player.Location = new Point(600, 240);
+            TheWord.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            TheWord.Size = new Size(TheWord.PreferredWidth, TheWord.PreferredHeight);
+            TheWord.Font = LargeFont;         
         }
 
         private void gameKeyDown(object sender, KeyEventArgs e)
@@ -47,20 +58,20 @@ namespace JPWP_Platform_Verbs
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            //movement_behaviour
+            //movement behaviour
             #region
-            if (right) 
+            if (right)
             {
-                Player.Left += 10;            
+                Player.Left += 10;
             }
 
-            if (left) 
+            if (left)
             {
-                Player.Left -= 10;            
+                Player.Left -= 10;
             }
 
             if (jump)
-            {          
+            {
                 Player.Top -= force;
                 if (force > -10)
                 {
@@ -70,7 +81,7 @@ namespace JPWP_Platform_Verbs
                 {
                     force = -10;
                 }
-                
+
                 System.Diagnostics.Debug.WriteLine(force);
             }
 
@@ -104,7 +115,7 @@ namespace JPWP_Platform_Verbs
                 if (x is PictureBox)
                 {
                     if ((string)x.Tag == "Plat")
-                    {   
+                    {
                         if (Player.Bounds.IntersectsWith(x.Bounds))
                         {
                             if (force <= 0 && Player.Bottom <= x.Bottom)
@@ -112,21 +123,59 @@ namespace JPWP_Platform_Verbs
                                 Player.Top = x.Top - Player.Width + 1;
                                 jump = false;
                             }
-                        }                       
+                        }
                     }
                 }
             }
-
-
-   
-
-
-
-
-
-
             #endregion
 
+            //displaying verbs
+            #region
+            try
+            {
+                StreamReader verbs = new StreamReader(Application.StartupPath + "\\VERBS\\VERBS_CORRECT.txt");
+                line = verbs.ReadLine();
+
+                int check = timeSec;
+
+                while (line != null)
+                {
+                    verb = line;
+                    TheWord.Text = verb.Remove(0,3);
+                    line = verbs.ReadLine();
+                }
+
+                verbs.Close();
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("file error");
+            }
+            #endregion
+
+            //Timer
+            #region
+            if (timeSec != 0)
+            {
+                if (counter % 30 == 0)
+                {
+                    timeSec--;
+
+                    if (timeSec < 10)
+                    {
+                        Timer.Text = "0" + timeSec.ToString();
+                    }
+                    else
+                    {
+                        Timer.Text = timeSec.ToString();
+                    }
+                    System.Diagnostics.Debug.WriteLine(Timer.Text);
+                    counter = 0;
+                }
+                counter++;
+            }
+            
+            #endregion
         }
 
         private void Platform1_Click(object sender, EventArgs e)
@@ -135,6 +184,11 @@ namespace JPWP_Platform_Verbs
         }
 
         private void Player_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TheWord_Click(object sender, EventArgs e)
         {
 
         }
