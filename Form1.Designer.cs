@@ -42,10 +42,10 @@
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
             Player = new PictureBox();
-            Platform3 = new PictureBox();
-            Platform4 = new PictureBox();
-            Platform2 = new PictureBox();
-            Platform1 = new PictureBox();
+            p3 = new PictureBox();
+            p4 = new PictureBox();
+            p2 = new PictureBox();
+            p1 = new PictureBox();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             GameScene.SuspendLayout();
@@ -53,10 +53,10 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Platform3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Platform4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Platform2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Platform1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)p3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)p4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)p2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)p1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -80,10 +80,10 @@
             GameScene.Controls.Add(pictureBox4);
             GameScene.Controls.Add(pictureBox3);
             GameScene.Controls.Add(Player);
-            GameScene.Controls.Add(Platform3);
-            GameScene.Controls.Add(Platform4);
-            GameScene.Controls.Add(Platform2);
-            GameScene.Controls.Add(Platform1);
+            GameScene.Controls.Add(p3);
+            GameScene.Controls.Add(p4);
+            GameScene.Controls.Add(p2);
+            GameScene.Controls.Add(p1);
             GameScene.Controls.Add(pictureBox1);
             GameScene.Controls.Add(pictureBox2);
             GameScene.Location = new Point(10, 10);
@@ -190,7 +190,7 @@
             // 
             Player.BackColor = SystemColors.Control;
             Player.Image = (Image)resources.GetObject("Player.Image");
-            Player.Location = new Point(89, 224);
+            Player.Location = new Point(366, 220);
             Player.Margin = new Padding(0);
             Player.Name = "Player";
             Player.Size = new Size(50, 50);
@@ -199,57 +199,57 @@
             Player.UseWaitCursor = true;
             Player.Click += Player_Click;
             // 
-            // Platform3
+            // p3
             // 
-            Platform3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Platform3.BackColor = SystemColors.ActiveCaption;
-            Platform3.Image = (Image)resources.GetObject("Platform3.Image");
-            Platform3.Location = new Point(255, 450);
-            Platform3.Margin = new Padding(0);
-            Platform3.Name = "Platform3";
-            Platform3.Size = new Size(150, 20);
-            Platform3.TabIndex = 4;
-            Platform3.TabStop = false;
-            Platform3.Tag = "Plat";
+            p3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            p3.BackColor = SystemColors.ActiveCaption;
+            p3.Image = (Image)resources.GetObject("p3.Image");
+            p3.Location = new Point(255, 450);
+            p3.Margin = new Padding(0);
+            p3.Name = "p3";
+            p3.Size = new Size(150, 20);
+            p3.TabIndex = 4;
+            p3.TabStop = false;
+            p3.Tag = "Plat";
             // 
-            // Platform4
+            // p4
             // 
-            Platform4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Platform4.BackColor = SystemColors.ActiveCaption;
-            Platform4.Image = (Image)resources.GetObject("Platform4.Image");
-            Platform4.Location = new Point(565, 300);
-            Platform4.Margin = new Padding(0);
-            Platform4.Name = "Platform4";
-            Platform4.Size = new Size(150, 20);
-            Platform4.TabIndex = 3;
-            Platform4.TabStop = false;
-            Platform4.Tag = "Plat";
+            p4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            p4.BackColor = SystemColors.ActiveCaption;
+            p4.Image = (Image)resources.GetObject("p4.Image");
+            p4.Location = new Point(565, 300);
+            p4.Margin = new Padding(0);
+            p4.Name = "p4";
+            p4.Size = new Size(150, 20);
+            p4.TabIndex = 3;
+            p4.TabStop = false;
+            p4.Tag = "Plat";
             // 
-            // Platform2
+            // p2
             // 
-            Platform2.BackColor = SystemColors.ActiveCaption;
-            Platform2.Image = (Image)resources.GetObject("Platform2.Image");
-            Platform2.Location = new Point(863, 450);
-            Platform2.Margin = new Padding(0);
-            Platform2.Name = "Platform2";
-            Platform2.Size = new Size(150, 20);
-            Platform2.TabIndex = 2;
-            Platform2.TabStop = false;
-            Platform2.Tag = "Plat";
+            p2.BackColor = SystemColors.ActiveCaption;
+            p2.Image = (Image)resources.GetObject("p2.Image");
+            p2.Location = new Point(863, 450);
+            p2.Margin = new Padding(0);
+            p2.Name = "p2";
+            p2.Size = new Size(150, 20);
+            p2.TabIndex = 2;
+            p2.TabStop = false;
+            p2.Tag = "Plat";
             // 
-            // Platform1
+            // p1
             // 
-            Platform1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Platform1.BackColor = SystemColors.ActiveCaption;
-            Platform1.Image = (Image)resources.GetObject("Platform1.Image");
-            Platform1.Location = new Point(565, 600);
-            Platform1.Margin = new Padding(0);
-            Platform1.Name = "Platform1";
-            Platform1.Size = new Size(150, 20);
-            Platform1.TabIndex = 1;
-            Platform1.TabStop = false;
-            Platform1.Tag = "Plat";
-            Platform1.Click += Platform1_Click;
+            p1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            p1.BackColor = SystemColors.ActiveCaption;
+            p1.Image = (Image)resources.GetObject("p1.Image");
+            p1.Location = new Point(565, 600);
+            p1.Margin = new Padding(0);
+            p1.Name = "p1";
+            p1.Size = new Size(150, 20);
+            p1.TabIndex = 1;
+            p1.TabStop = false;
+            p1.Tag = "Plat";
+            p1.Click += Platform1_Click;
             // 
             // pictureBox1
             // 
@@ -285,10 +285,10 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)Player).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Platform3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Platform4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Platform2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Platform1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)p3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)p4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)p2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)p1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
@@ -299,10 +299,10 @@
         private Panel GameScene;
         private PictureBox Player;
         private System.Windows.Forms.Timer gameTimer;
-        private PictureBox Platform1;
-        private PictureBox Platform2;
-        private PictureBox Platform3;
-        private PictureBox Platform4;
+        private PictureBox p1;
+        private PictureBox p2;
+        private PictureBox p3;
+        private PictureBox p4;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox5;

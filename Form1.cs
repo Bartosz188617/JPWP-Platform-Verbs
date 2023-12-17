@@ -15,6 +15,8 @@ namespace JPWP_Platform_Verbs
         String line, verb;
 
         Font LargeFont = new Font("Palatino Linotype", 20);
+
+        private string platform_number;
         
 
         public PlatformVerbsForm()
@@ -81,8 +83,6 @@ namespace JPWP_Platform_Verbs
                 {
                     force = -10;
                 }
-
-                System.Diagnostics.Debug.WriteLine(force);
             }
 
             if (Player.Top + Player.Height >= GameScene.Height) //making sure the Player won't fall of the GameScene after jump
@@ -109,6 +109,13 @@ namespace JPWP_Platform_Verbs
                 Player.Left = GameScene.Width - Player.Width;
             }
 
+            //collisions with bottom of a game scene
+            if(Player.Location.Y >= 650)
+            {
+                //lose health
+                Player.Location = new Point(600, 240);
+            }
+
             //collisions with platforms
             foreach (Control x in GameScene.Controls)
             {
@@ -123,6 +130,8 @@ namespace JPWP_Platform_Verbs
                                 Player.Top = x.Top - Player.Width + 1;
                                 jump = false;
                             }
+                            platform_number = x.Name;                           //checking on which platform the player is standing
+                            System.Diagnostics.Debug.WriteLine(platform_number);
                         }
                     }
                 }
@@ -153,7 +162,7 @@ namespace JPWP_Platform_Verbs
             }
             #endregion
 
-            //Timer
+            //timer
             #region
             if (timeSec != 0)
             {
@@ -174,7 +183,7 @@ namespace JPWP_Platform_Verbs
                 }
                 counter++;
             }
-            
+
             #endregion
         }
 
