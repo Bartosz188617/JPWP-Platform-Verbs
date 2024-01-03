@@ -9,15 +9,15 @@ namespace JPWP_Platform_Verbs
     {
         private int counter = 0, timeSec = 15;
         private int score = 1;
-        private bool right, left, jump, jumpON;
-        private int gravity = 25;
+        private bool right, left, jump, jumpON, on_platform;
+        private int gravity = 20;
         private int force;
         String line, verb;
 
         Font LargeFont = new Font("Palatino Linotype", 20);
 
         private string platform_number;
-        
+
 
         public PlatformVerbsForm()
         {
@@ -27,7 +27,7 @@ namespace JPWP_Platform_Verbs
             Player.Location = new Point(600, 240);
             TheWord.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             TheWord.Size = new Size(TheWord.PreferredWidth, TheWord.PreferredHeight);
-            TheWord.Font = LargeFont;         
+            TheWord.Font = LargeFont;
         }
 
         private void gameKeyDown(object sender, KeyEventArgs e)
@@ -84,17 +84,6 @@ namespace JPWP_Platform_Verbs
                     force = -10;
                 }
             }
-
-            if (Player.Top + Player.Height >= GameScene.Height) //making sure the Player won't fall of the GameScene after jump
-            {
-                Player.Top = GameScene.Height - Player.Height;
-                jump = false;
-            }
-            else
-            {
-
-                Player.Top += 5;
-            }
             #endregion
 
             //collisions
@@ -110,7 +99,7 @@ namespace JPWP_Platform_Verbs
             }
 
             //collisions with bottom of a game scene
-            if(Player.Location.Y >= 650)
+            if (Player.Location.Y >= 650)
             {
                 //lose health
                 Player.Location = new Point(600, 240);
@@ -127,14 +116,29 @@ namespace JPWP_Platform_Verbs
                         {
                             if (force <= 0 && Player.Bottom <= x.Bottom)
                             {
-                                Player.Top = x.Top - Player.Width + 1;
+                                Player.Top = x.Top - Player.Width - 1;
                                 jump = false;
+                                on_platform = true;
+                                platform_number = x.Name;                           //checking on which platform the player is standing
+                                System.Diagnostics.Debug.WriteLine(platform_number);
                             }
-                            platform_number = x.Name;                           //checking on which platform the player is standing
-                            System.Diagnostics.Debug.WriteLine(platform_number);
-                        }
+                            
+                        } 
                     }
                 }
+            }
+
+            if ((Player.Location.X > 0 && Player.Location.X < 205) ||     //checking if Player left a platform 
+                (Player.Location.X > 405 && Player.Location.X < 515) || 
+                (Player.Location.X > 715 && Player.Location.X < 813) || 
+                (Player.Location.X > 1013 && Player.Location.X < 1230))
+            {
+                on_platform = false;
+            }
+
+            if (!on_platform)
+            {
+                jump = true;
             }
             #endregion
 
@@ -150,7 +154,7 @@ namespace JPWP_Platform_Verbs
                 while (line != null)
                 {
                     verb = line;
-                    TheWord.Text = verb.Remove(0,3);
+                    TheWord.Text = verb.Remove(0, 3);
                     line = verbs.ReadLine();
                 }
 
@@ -178,7 +182,7 @@ namespace JPWP_Platform_Verbs
                     {
                         Timer.Text = timeSec.ToString();
                     }
-                    System.Diagnostics.Debug.WriteLine(Timer.Text);
+                    //System.Diagnostics.Debug.WriteLine(Timer.Text);
                     counter = 0;
                 }
                 counter++;
@@ -198,6 +202,11 @@ namespace JPWP_Platform_Verbs
         }
 
         private void TheWord_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlatformVerbsForm_Load(object sender, EventArgs e)
         {
 
         }

@@ -190,7 +190,7 @@
             // 
             Player.BackColor = SystemColors.Control;
             Player.Image = (Image)resources.GetObject("Player.Image");
-            Player.Location = new Point(366, 220);
+            Player.Location = new Point(206, 400);
             Player.Margin = new Padding(0);
             Player.Name = "Player";
             Player.Size = new Size(50, 50);
@@ -277,6 +277,7 @@
             Controls.Add(GameScene);
             Name = "PlatformVerbsForm";
             Text = "Platform Verb";
+            Load += PlatformVerbsForm_Load;
             KeyDown += gameKeyDown;
             KeyUp += gameKeyUp;
             GameScene.ResumeLayout(false);
