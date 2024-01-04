@@ -33,10 +33,10 @@
             gameTimer = new System.Windows.Forms.Timer(components);
             GameScene = new Panel();
             Timer = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            answer1 = new Label();
+            answer2 = new Label();
+            answer4 = new Label();
+            answer3 = new Label();
             TheWord = new Label();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
@@ -64,17 +64,17 @@
             // gameTimer
             // 
             gameTimer.Enabled = true;
-            gameTimer.Interval = 20;
+            gameTimer.Interval = 5;
             gameTimer.Tick += gameTimer_Tick;
             // 
             // GameScene
             // 
             GameScene.BackColor = SystemColors.Control;
             GameScene.Controls.Add(Timer);
-            GameScene.Controls.Add(label4);
-            GameScene.Controls.Add(label3);
-            GameScene.Controls.Add(label2);
-            GameScene.Controls.Add(label1);
+            GameScene.Controls.Add(answer1);
+            GameScene.Controls.Add(answer2);
+            GameScene.Controls.Add(answer4);
+            GameScene.Controls.Add(answer3);
             GameScene.Controls.Add(TheWord);
             GameScene.Controls.Add(pictureBox5);
             GameScene.Controls.Add(pictureBox4);
@@ -103,49 +103,49 @@
             Timer.Tag = "";
             Timer.Text = "00";
             // 
-            // label4
+            // answer1
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(599, 620);
-            label4.Name = "label4";
-            label4.Size = new Size(84, 36);
-            label4.TabIndex = 13;
-            label4.Text = "VERB";
-            label4.TextAlign = ContentAlignment.TopCenter;
+            answer1.AutoSize = true;
+            answer1.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            answer1.Location = new Point(565, 620);
+            answer1.Name = "answer1";
+            answer1.Size = new Size(85, 36);
+            answer1.TabIndex = 13;
+            answer1.Text = "          ";
+            answer1.TextAlign = ContentAlignment.TopCenter;
             // 
-            // label3
+            // answer2
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(898, 470);
-            label3.Name = "label3";
-            label3.Size = new Size(84, 36);
-            label3.TabIndex = 12;
-            label3.Text = "VERB";
-            label3.TextAlign = ContentAlignment.TopCenter;
+            answer2.AutoSize = true;
+            answer2.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            answer2.Location = new Point(863, 470);
+            answer2.Name = "answer2";
+            answer2.Size = new Size(85, 36);
+            answer2.TabIndex = 12;
+            answer2.Text = "          ";
+            answer2.TextAlign = ContentAlignment.TopCenter;
             // 
-            // label2
+            // answer4
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(599, 320);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 36);
-            label2.TabIndex = 11;
-            label2.Text = "VERB";
-            label2.TextAlign = ContentAlignment.TopCenter;
+            answer4.AutoSize = true;
+            answer4.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            answer4.Location = new Point(565, 320);
+            answer4.Name = "answer4";
+            answer4.Size = new Size(85, 36);
+            answer4.TabIndex = 11;
+            answer4.Text = "          ";
+            answer4.TextAlign = ContentAlignment.TopCenter;
             // 
-            // label1
+            // answer3
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(288, 470);
-            label1.Name = "label1";
-            label1.Size = new Size(84, 36);
-            label1.TabIndex = 10;
-            label1.Text = "VERB";
-            label1.TextAlign = ContentAlignment.TopCenter;
+            answer3.AutoSize = true;
+            answer3.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            answer3.Location = new Point(255, 470);
+            answer3.Name = "answer3";
+            answer3.Size = new Size(85, 36);
+            answer3.TabIndex = 10;
+            answer3.Text = "          ";
+            answer3.TextAlign = ContentAlignment.TopCenter;
             // 
             // TheWord
             // 
@@ -153,9 +153,9 @@
             TheWord.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             TheWord.Location = new Point(276, 16);
             TheWord.Name = "TheWord";
-            TheWord.Size = new Size(84, 36);
+            TheWord.Size = new Size(85, 36);
             TheWord.TabIndex = 1;
-            TheWord.Text = "VERB";
+            TheWord.Text = "          ";
             TheWord.TextAlign = ContentAlignment.TopCenter;
             TheWord.Click += TheWord_Click;
             // 
@@ -190,7 +190,7 @@
             // 
             Player.BackColor = SystemColors.Control;
             Player.Image = (Image)resources.GetObject("Player.Image");
-            Player.Location = new Point(206, 400);
+            Player.Location = new Point(590, 250);
             Player.Margin = new Padding(0);
             Player.Name = "Player";
             Player.Size = new Size(50, 50);
@@ -310,10 +310,10 @@
         private PictureBox pictureBox4;
         private PictureBox pictureBox3;
         private Label TheWord;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label1;
+        private Label answer1;
+        private Label answer2;
+        private Label answer4;
+        private Label answer3;
         private Label Timer;
     }
 }
