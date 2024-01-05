@@ -38,9 +38,9 @@
             answer4 = new Label();
             answer3 = new Label();
             TheWord = new Label();
-            pictureBox5 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
+            h3 = new PictureBox();
+            h2 = new PictureBox();
+            h1 = new PictureBox();
             Player = new PictureBox();
             p3 = new PictureBox();
             p4 = new PictureBox();
@@ -49,9 +49,9 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             GameScene.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)h3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)h2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)h1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player).BeginInit();
             ((System.ComponentModel.ISupportInitialize)p3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)p4).BeginInit();
@@ -76,9 +76,9 @@
             GameScene.Controls.Add(answer4);
             GameScene.Controls.Add(answer3);
             GameScene.Controls.Add(TheWord);
-            GameScene.Controls.Add(pictureBox5);
-            GameScene.Controls.Add(pictureBox4);
-            GameScene.Controls.Add(pictureBox3);
+            GameScene.Controls.Add(h3);
+            GameScene.Controls.Add(h2);
+            GameScene.Controls.Add(h1);
             GameScene.Controls.Add(Player);
             GameScene.Controls.Add(p3);
             GameScene.Controls.Add(p4);
@@ -159,32 +159,35 @@
             TheWord.TextAlign = ContentAlignment.TopCenter;
             TheWord.Click += TheWord_Click;
             // 
-            // pictureBox5
+            // h3
             // 
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(115, 3);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(50, 50);
-            pictureBox5.TabIndex = 9;
-            pictureBox5.TabStop = false;
+            h3.AccessibleName = "h3";
+            h3.Image = (Image)resources.GetObject("h3.Image");
+            h3.Location = new Point(115, 3);
+            h3.Name = "h3";
+            h3.Size = new Size(50, 50);
+            h3.TabIndex = 9;
+            h3.TabStop = false;
             // 
-            // pictureBox4
+            // h2
             // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(59, 3);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(50, 50);
-            pictureBox4.TabIndex = 8;
-            pictureBox4.TabStop = false;
+            h2.AccessibleName = "h2";
+            h2.Image = (Image)resources.GetObject("h2.Image");
+            h2.Location = new Point(59, 3);
+            h2.Name = "h2";
+            h2.Size = new Size(50, 50);
+            h2.TabIndex = 8;
+            h2.TabStop = false;
             // 
-            // pictureBox3
+            // h1
             // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(3, 3);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(50, 50);
-            pictureBox3.TabIndex = 7;
-            pictureBox3.TabStop = false;
+            h1.AccessibleName = "h1";
+            h1.Image = (Image)resources.GetObject("h1.Image");
+            h1.Location = new Point(3, 3);
+            h1.Name = "h1";
+            h1.Size = new Size(50, 50);
+            h1.TabIndex = 7;
+            h1.TabStop = false;
             // 
             // Player
             // 
@@ -282,9 +285,9 @@
             KeyUp += gameKeyUp;
             GameScene.ResumeLayout(false);
             GameScene.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)h3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)h2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)h1).EndInit();
             ((System.ComponentModel.ISupportInitialize)Player).EndInit();
             ((System.ComponentModel.ISupportInitialize)p3).EndInit();
             ((System.ComponentModel.ISupportInitialize)p4).EndInit();
@@ -306,9 +309,9 @@
         private PictureBox p4;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
-        private PictureBox pictureBox5;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
+        private PictureBox h3;
+        private PictureBox h2;
+        private PictureBox h1;
         private Label TheWord;
         private Label answer1;
         private Label answer2;

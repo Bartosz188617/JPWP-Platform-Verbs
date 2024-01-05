@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection.Emit;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
@@ -265,14 +266,14 @@ namespace JPWP_Platform_Verbs
             "50/WRITTEN",
             "50/WRITE"
         };
-
+            
         Random rnd = new Random();
         Random plat = new Random();
 
         private int[] used = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-        private int counter = 0, index, timeSec = 0, health = 3, Time = 6;
-        private bool right, left, jump, on_platform, gameON = false;
+        private int counter = 0, index, timeSec = 3, health = 3, Time = 6, points = 0, rounds = 0, background_time;
+        private bool right, left, jump, on_platform, gameON = true, pause = false;
         private int gravity = 20, force;
         
 
@@ -329,17 +330,10 @@ namespace JPWP_Platform_Verbs
         {
             //checking if game is on
             #region
-            if (health <= 0)
-            {
-                gameON = false;
-            }
-            else
-            {
-                gameON = true;
-            }
 
             if (gameON)
             {
+                Player.Visible = true;
                 TheWord.Visible = true;
                 answer1.Visible = true;
                 answer2.Visible = true;
@@ -348,7 +342,7 @@ namespace JPWP_Platform_Verbs
             }
             else
             {
-                Timer.Text = "00";
+                Timer.Text = "END";
                 TheWord.Visible = false;
                 answer1.Visible = false;
                 answer2.Visible = false;
@@ -400,7 +394,29 @@ namespace JPWP_Platform_Verbs
             if (Player.Location.Y >= 650)
             {
                 health--;
-                Player.Location = new Point(600, 260);
+                if (health == 2)
+                {
+                    h3.Visible = false;
+                }
+                else if (health == 1)
+                {
+                    h2.Visible = false;
+                }
+                else if (health == 0)
+                {
+                    gameON = false;
+                    h1.Visible = false;
+                }
+
+                if (health == 0)
+                {
+                    Player.Visible = false;
+                }
+                else
+                {
+                    Player.Location = new Point(600, 260);
+                }
+                
             }
 
             //collisions with platforms
@@ -434,7 +450,7 @@ namespace JPWP_Platform_Verbs
                 { 
                     on_platform = false; 
                     platform_number = "none"; 
-                    System.Diagnostics.Debug.WriteLine("Platform standing on: " + platform_number);
+                    //System.Diagnostics.Debug.WriteLine("Platform standing on: " + platform_number);
                 }
             }
 
@@ -446,12 +462,12 @@ namespace JPWP_Platform_Verbs
 
             //displaying verb
             #region
-            if (timeSec == 0 && gameON == true)
+            void Verb_Display()
             {
                 index = rnd.Next(0, 49);
-                for(int k = 0; k < 49; k++) //checking if generated number is new
+                for (int k = 0; k < 49; k++) //checking if generated number is new
                 {
-                    if(used[k] == index)
+                    if (used[k] == index)
                     {
                         index = rnd.Next(0, 49);
                         k = 0;
@@ -464,32 +480,32 @@ namespace JPWP_Platform_Verbs
 
                 int Plat = plat.Next(1, 5);
                 answer = answers[(index + 1) * 4];              //displayed right answer
-                if (Plat == 1) 
-                { 
-                    answer1.Text = answers[(index + 1) * 4].Remove(0, 3); 
+                if (Plat == 1)
+                {
+                    answer1.Text = answers[(index + 1) * 4].Remove(0, 3);
                     answer2.Text = answers[((index + 1) * 4) + 1].Remove(0, 3);
                     answer3.Text = answers[((index + 1) * 4) + 2].Remove(0, 3);
                     answer4.Text = answers[((index + 1) * 4) + 3].Remove(0, 3);
                     rightAnswer = "p1";
                 }
-                if (Plat == 2) 
-                { 
+                if (Plat == 2)
+                {
                     answer2.Text = answers[(index + 1) * 4].Remove(0, 3);
                     answer3.Text = answers[((index + 1) * 4) + 1].Remove(0, 3);
                     answer4.Text = answers[((index + 1) * 4) + 2].Remove(0, 3);
                     answer1.Text = answers[((index + 1) * 4) + 3].Remove(0, 3);
                     rightAnswer = "p2";
                 }
-                if (Plat == 3) 
-                { 
+                if (Plat == 3)
+                {
                     answer3.Text = answers[(index + 1) * 4].Remove(0, 3);
                     answer4.Text = answers[((index + 1) * 4) + 1].Remove(0, 3);
                     answer1.Text = answers[((index + 1) * 4) + 2].Remove(0, 3);
                     answer2.Text = answers[((index + 1) * 4) + 3].Remove(0, 3);
                     rightAnswer = "p3";
                 }
-                if (Plat >= 4) 
-                { 
+                if (Plat >= 4)
+                {
                     answer4.Text = answers[(index + 1) * 4].Remove(0, 3);
                     answer1.Text = answers[((index + 1) * 4) + 1].Remove(0, 3);
                     answer2.Text = answers[((index + 1) * 4) + 2].Remove(0, 3);
@@ -497,40 +513,95 @@ namespace JPWP_Platform_Verbs
                     rightAnswer = "p4";
                 }
                 //System.Diagnostics.Debug.WriteLine(answers[(index + 1) * 4].Remove(0, 3));
-                
+
                 System.Diagnostics.Debug.WriteLine("health: " + health);
                 System.Diagnostics.Debug.WriteLine("right platform: " + Plat);
-            }
-            
+                
+            }   
             #endregion
+   
 
-            //timer
+            //gameON
             #region
-            if (timeSec != 0 && gameON)
+            if (gameON)
             {
-                if (counter % 70 == 0)
+                if (pause == false) //constant timer if unpaused
                 {
-                    timeSec--;
+                    if (counter % 70 == 0)
+                    {
+                        if(timeSec == Time)
+                        {
+                            Verb_Display();
+                        }
 
-                    if (timeSec < 10)
-                    {
-                        Timer.Text = "0" + timeSec.ToString();
+                        if (timeSec < 10)
+                        {
+                            Timer.Text = "0" + timeSec.ToString();
+                        }
+                        else
+                        {
+                            Timer.Text = timeSec.ToString();
+                        }
+                        counter = 0;
+                        background_time++;
+                        System.Diagnostics.Debug.WriteLine(background_time);
+                        timeSec--;
                     }
-                    else
+                    counter++;
+                }                                
+                
+                if (rounds == 0 && background_time == 4) //countdown to start
+                {
+                    pause = true;
+                    if (counter %70==0)
                     {
-                        Timer.Text = timeSec.ToString();
+                        Timer.Text = "00";
+                        background_time++;
+                        System.Diagnostics.Debug.WriteLine(background_time);
+                        
+                        counter = 69;
+                        rounds++;
+                        timeSec = Time;
+                        pause = false;
                     }
-                    //System.Diagnostics.Debug.WriteLine(timeSec);
-                    counter = 0;
+                    counter++;       
                 }
-                counter++;
-            }
-            else
-            {
-                timeSec = Time;
-            }
 
+                if (rounds > 0 && timeSec == -1) //checking if Player chose bad answer
+                {
+                    pause = true;
+                    if (counter % 70 == 0)
+                    {
+                        if (rightAnswer != platform_number)
+                        {
+                            health--;
+                            if (health == 2)
+                            {
+                                h3.Visible = false;
+                            }
+                            else if (health == 1)
+                            {
+                                h2.Visible = false;
+                            }
+                            else if(health == 0)
+                            {
+                                gameON = false;
+                                h1.Visible=false;
+                            }
+                        }
+                        Timer.Text = "00";
+                        background_time++;
+                        counter = 69;
+                        rounds++;
+                        timeSec = Time;
+                        pause = false;
+                    }
+                    counter++;
+                }
+            }
             #endregion
+
+
 
             
         }
