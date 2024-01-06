@@ -32,6 +32,26 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlatformVerbsForm));
             gameTimer = new System.Windows.Forms.Timer(components);
             GameScene = new Panel();
+            HighscoreLabel = new Label();
+            VerbLabel = new Label();
+            TimeLabel = new Label();
+            PointCounter = new Label();
+            PointsLabel = new Label();
+            Verbs_data = new FlowLayoutPanel();
+            panel4 = new Panel();
+            verbsData = new Label();
+            ListOfVerbs = new Label();
+            Title = new Label();
+            pausing = new FlowLayoutPanel();
+            panel3 = new Panel();
+            pause_button = new Label();
+            SlideMenu = new FlowLayoutPanel();
+            panel1 = new Panel();
+            label1 = new Label();
+            MenuButton = new PictureBox();
+            start_stop = new FlowLayoutPanel();
+            panel2 = new Panel();
+            label2 = new Label();
             Timer = new Label();
             answer1 = new Label();
             answer2 = new Label();
@@ -46,9 +66,20 @@
             p4 = new PictureBox();
             p2 = new PictureBox();
             p1 = new PictureBox();
-            pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            SlideMenuTimer = new System.Windows.Forms.Timer(components);
+            HighScoreCounter = new Label();
             GameScene.SuspendLayout();
+            Verbs_data.SuspendLayout();
+            panel4.SuspendLayout();
+            pausing.SuspendLayout();
+            panel3.SuspendLayout();
+            SlideMenu.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)MenuButton).BeginInit();
+            start_stop.SuspendLayout();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)h3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)h2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)h1).BeginInit();
@@ -57,8 +88,8 @@
             ((System.ComponentModel.ISupportInitialize)p4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)p2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)p1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // gameTimer
@@ -70,6 +101,18 @@
             // GameScene
             // 
             GameScene.BackColor = SystemColors.Control;
+            GameScene.Controls.Add(HighScoreCounter);
+            GameScene.Controls.Add(HighscoreLabel);
+            GameScene.Controls.Add(VerbLabel);
+            GameScene.Controls.Add(TimeLabel);
+            GameScene.Controls.Add(PointCounter);
+            GameScene.Controls.Add(PointsLabel);
+            GameScene.Controls.Add(Verbs_data);
+            GameScene.Controls.Add(ListOfVerbs);
+            GameScene.Controls.Add(Title);
+            GameScene.Controls.Add(pausing);
+            GameScene.Controls.Add(SlideMenu);
+            GameScene.Controls.Add(start_stop);
             GameScene.Controls.Add(Timer);
             GameScene.Controls.Add(answer1);
             GameScene.Controls.Add(answer2);
@@ -84,19 +127,218 @@
             GameScene.Controls.Add(p4);
             GameScene.Controls.Add(p2);
             GameScene.Controls.Add(p1);
-            GameScene.Controls.Add(pictureBox1);
             GameScene.Controls.Add(pictureBox2);
+            GameScene.Controls.Add(pictureBox1);
             GameScene.Location = new Point(10, 10);
             GameScene.Margin = new Padding(0);
             GameScene.Name = "GameScene";
             GameScene.Size = new Size(1280, 700);
             GameScene.TabIndex = 0;
             // 
+            // HighscoreLabel
+            // 
+            HighscoreLabel.AutoSize = true;
+            HighscoreLabel.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            HighscoreLabel.Location = new Point(369, 250);
+            HighscoreLabel.Name = "HighscoreLabel";
+            HighscoreLabel.Size = new Size(192, 36);
+            HighscoreLabel.TabIndex = 22;
+            HighscoreLabel.Text = "HIGH SCORE:";
+            // 
+            // VerbLabel
+            // 
+            VerbLabel.AutoSize = true;
+            VerbLabel.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            VerbLabel.Location = new Point(207, 17);
+            VerbLabel.Name = "VerbLabel";
+            VerbLabel.Size = new Size(91, 36);
+            VerbLabel.TabIndex = 21;
+            VerbLabel.Text = "VERB:";
+            // 
+            // TimeLabel
+            // 
+            TimeLabel.AutoSize = true;
+            TimeLabel.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TimeLabel.Location = new Point(1074, 17);
+            TimeLabel.Name = "TimeLabel";
+            TimeLabel.Size = new Size(89, 36);
+            TimeLabel.TabIndex = 20;
+            TimeLabel.Text = "TIME:";
+            // 
+            // PointCounter
+            // 
+            PointCounter.AutoSize = true;
+            PointCounter.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            PointCounter.Location = new Point(729, 17);
+            PointCounter.Name = "PointCounter";
+            PointCounter.Size = new Size(43, 36);
+            PointCounter.TabIndex = 19;
+            PointCounter.Text = "00";
+            // 
+            // PointsLabel
+            // 
+            PointsLabel.AutoSize = true;
+            PointsLabel.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            PointsLabel.Location = new Point(601, 17);
+            PointsLabel.Name = "PointsLabel";
+            PointsLabel.Size = new Size(122, 36);
+            PointsLabel.TabIndex = 18;
+            PointsLabel.Text = "POINTS:";
+            // 
+            // Verbs_data
+            // 
+            Verbs_data.BackColor = Color.FromArgb(249, 78, 78);
+            Verbs_data.Controls.Add(panel4);
+            Verbs_data.Location = new Point(3, 282);
+            Verbs_data.MaximumSize = new Size(200, 50);
+            Verbs_data.Name = "Verbs_data";
+            Verbs_data.Size = new Size(200, 50);
+            Verbs_data.TabIndex = 17;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(verbsData);
+            panel4.Location = new Point(3, 3);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(195, 45);
+            panel4.TabIndex = 0;
+            // 
+            // verbsData
+            // 
+            verbsData.AutoSize = true;
+            verbsData.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            verbsData.Location = new Point(-5, 7);
+            verbsData.Name = "verbsData";
+            verbsData.Size = new Size(204, 32);
+            verbsData.TabIndex = 1;
+            verbsData.Text = "Baza Wyrazów";
+            verbsData.Click += verbsData_Click;
+            // 
+            // ListOfVerbs
+            // 
+            ListOfVerbs.AutoSize = true;
+            ListOfVerbs.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            ListOfVerbs.Location = new Point(3, 347);
+            ListOfVerbs.Name = "ListOfVerbs";
+            ListOfVerbs.Size = new Size(0, 20);
+            ListOfVerbs.TabIndex = 1;
+            // 
+            // Title
+            // 
+            Title.AutoSize = true;
+            Title.BackColor = Color.FromArgb(249, 78, 78);
+            Title.Font = new Font("Arial", 72F, FontStyle.Regular, GraphicsUnit.Point);
+            Title.Location = new Point(369, 113);
+            Title.Name = "Title";
+            Title.Size = new Size(677, 107);
+            Title.TabIndex = 2;
+            Title.Text = "Platform Verbs";
+            // 
+            // pausing
+            // 
+            pausing.BackColor = Color.FromArgb(249, 78, 78);
+            pausing.Controls.Add(panel3);
+            pausing.Location = new Point(3, 226);
+            pausing.MaximumSize = new Size(200, 50);
+            pausing.Name = "pausing";
+            pausing.Size = new Size(200, 50);
+            pausing.TabIndex = 16;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(pause_button);
+            panel3.Location = new Point(3, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(195, 45);
+            panel3.TabIndex = 0;
+            // 
+            // pause_button
+            // 
+            pause_button.AutoSize = true;
+            pause_button.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            pause_button.Location = new Point(87, 7);
+            pause_button.Name = "pause_button";
+            pause_button.Size = new Size(93, 32);
+            pause_button.TabIndex = 1;
+            pause_button.Text = "Pauza";
+            pause_button.Click += pause_button_Click;
+            // 
+            // SlideMenu
+            // 
+            SlideMenu.BackColor = Color.FromArgb(249, 78, 78);
+            SlideMenu.Controls.Add(panel1);
+            SlideMenu.Location = new Point(3, 114);
+            SlideMenu.MaximumSize = new Size(200, 50);
+            SlideMenu.MinimumSize = new Size(50, 50);
+            SlideMenu.Name = "SlideMenu";
+            SlideMenu.Size = new Size(200, 50);
+            SlideMenu.TabIndex = 14;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(MenuButton);
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(195, 45);
+            panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(89, 7);
+            label1.Name = "label1";
+            label1.Size = new Size(93, 32);
+            label1.TabIndex = 1;
+            label1.Text = "MENU";
+            // 
+            // MenuButton
+            // 
+            MenuButton.BackgroundImageLayout = ImageLayout.Center;
+            MenuButton.Image = (Image)resources.GetObject("MenuButton.Image");
+            MenuButton.Location = new Point(7, 7);
+            MenuButton.Name = "MenuButton";
+            MenuButton.Size = new Size(30, 30);
+            MenuButton.SizeMode = PictureBoxSizeMode.CenterImage;
+            MenuButton.TabIndex = 0;
+            MenuButton.TabStop = false;
+            MenuButton.Click += MenuButton_Click;
+            // 
+            // start_stop
+            // 
+            start_stop.BackColor = Color.FromArgb(249, 78, 78);
+            start_stop.Controls.Add(panel2);
+            start_stop.Location = new Point(3, 170);
+            start_stop.MaximumSize = new Size(200, 50);
+            start_stop.Name = "start_stop";
+            start_stop.Size = new Size(200, 50);
+            start_stop.TabIndex = 15;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(label2);
+            panel2.Location = new Point(3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(195, 45);
+            panel2.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(89, 6);
+            label2.Name = "label2";
+            label2.Size = new Size(76, 32);
+            label2.TabIndex = 1;
+            label2.Text = "Start";
+            label2.Click += label2_Click;
+            // 
             // Timer
             // 
             Timer.AutoSize = true;
             Timer.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Timer.Location = new Point(1198, 17);
+            Timer.Location = new Point(1169, 17);
             Timer.Name = "Timer";
             Timer.Size = new Size(43, 36);
             Timer.TabIndex = 1;
@@ -151,7 +393,7 @@
             // 
             TheWord.AutoSize = true;
             TheWord.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            TheWord.Location = new Point(276, 16);
+            TheWord.Location = new Point(304, 17);
             TheWord.Name = "TheWord";
             TheWord.Size = new Size(85, 36);
             TheWord.TabIndex = 1;
@@ -163,7 +405,7 @@
             // 
             h3.AccessibleName = "h3";
             h3.Image = (Image)resources.GetObject("h3.Image");
-            h3.Location = new Point(115, 3);
+            h3.Location = new Point(129, 3);
             h3.Name = "h3";
             h3.Size = new Size(50, 50);
             h3.TabIndex = 9;
@@ -173,7 +415,7 @@
             // 
             h2.AccessibleName = "h2";
             h2.Image = (Image)resources.GetObject("h2.Image");
-            h2.Location = new Point(59, 3);
+            h2.Location = new Point(73, 3);
             h2.Name = "h2";
             h2.Size = new Size(50, 50);
             h2.TabIndex = 8;
@@ -183,7 +425,7 @@
             // 
             h1.AccessibleName = "h1";
             h1.Image = (Image)resources.GetObject("h1.Image");
-            h1.Location = new Point(3, 3);
+            h1.Location = new Point(17, 3);
             h1.Name = "h1";
             h1.Size = new Size(50, 50);
             h1.TabIndex = 7;
@@ -193,7 +435,7 @@
             // 
             Player.BackColor = SystemColors.Control;
             Player.Image = (Image)resources.GetObject("Player.Image");
-            Player.Location = new Point(590, 250);
+            Player.Location = new Point(613, 250);
             Player.Margin = new Padding(0);
             Player.Name = "Player";
             Player.Size = new Size(50, 50);
@@ -254,6 +496,15 @@
             p1.Tag = "Plat";
             p1.Click += Platform1_Click;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(640, 0);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(640, 700);
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -263,14 +514,20 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // SlideMenuTimer
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(640, 0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(640, 700);
-            pictureBox2.TabIndex = 6;
-            pictureBox2.TabStop = false;
+            SlideMenuTimer.Interval = 5;
+            SlideMenuTimer.Tick += SlideMenuTimer_Tick;
+            // 
+            // HighScoreCounter
+            // 
+            HighScoreCounter.AutoSize = true;
+            HighScoreCounter.Font = new Font("Palatino Linotype", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            HighScoreCounter.Location = new Point(567, 250);
+            HighScoreCounter.Name = "HighScoreCounter";
+            HighScoreCounter.Size = new Size(43, 36);
+            HighScoreCounter.TabIndex = 23;
+            HighScoreCounter.Text = "00";
             // 
             // PlatformVerbsForm
             // 
@@ -285,6 +542,19 @@
             KeyUp += gameKeyUp;
             GameScene.ResumeLayout(false);
             GameScene.PerformLayout();
+            Verbs_data.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            pausing.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            SlideMenu.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)MenuButton).EndInit();
+            start_stop.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)h3).EndInit();
             ((System.ComponentModel.ISupportInitialize)h2).EndInit();
             ((System.ComponentModel.ISupportInitialize)h1).EndInit();
@@ -293,8 +563,8 @@
             ((System.ComponentModel.ISupportInitialize)p4).EndInit();
             ((System.ComponentModel.ISupportInitialize)p2).EndInit();
             ((System.ComponentModel.ISupportInitialize)p1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -318,5 +588,27 @@
         private Label answer4;
         private Label answer3;
         private Label Timer;
+        private FlowLayoutPanel SlideMenu;
+        private Panel panel1;
+        private PictureBox MenuButton;
+        private Label label1;
+        private System.Windows.Forms.Timer SlideMenuTimer;
+        private FlowLayoutPanel start_stop;
+        private Panel panel2;
+        private Label label2;
+        private FlowLayoutPanel pausing;
+        private Panel panel3;
+        private Label pause_button;
+        private Label Title;
+        private FlowLayoutPanel Verbs_data;
+        private Panel panel4;
+        private Label verbsData;
+        private Label ListOfVerbs;
+        private Label PointCounter;
+        private Label PointsLabel;
+        private Label TimeLabel;
+        private Label VerbLabel;
+        private Label HighscoreLabel;
+        private Label HighScoreCounter;
     }
 }
